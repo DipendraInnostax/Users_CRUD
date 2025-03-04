@@ -7,7 +7,7 @@ import useStudent from "../../composable/studentApi";
 
 const route = useRoute();
 
-const { getSingleStudentData, studentData, error } = useStudent();
+const { getSingleStudentData, studentData } = useStudent();
 
 onMounted(async () => {
   await getSingleStudentData(route.params.id)

@@ -1,24 +1,30 @@
-<script setup>
-
-
+<script setup> 
 import {useRoute} from "vue-router"
 import { RouterLink } from "vue-router";
+
+import "vue3-toastify/dist/index.css";
+import {toast} from "vue3-toastify"
+
 import { onMounted } from "vue";
 import useStudent from "../../composable/studentApi";
 
 const route = useRoute();
 
-const { editdata, studentData, error } = useStudent();
+const { editdata, studentData,getSingleStudentData } = useStudent();
 
 onMounted(async () => {
-  await editdata(route.params.id)
-  
+  await getSingleStudentData(route.params.id)
   //console.log(studentData)
 });
 
 
 function handleUpdateStudentForm() {
-  console.log("updated");
+  editdata(route.params.id,studentData.value)
+  //console.log("updated");
+  //preventDefault()
+  toast.success("Updated User Successfully",{
+    autoclose:1000,
+  })
 }
 </script>
 
@@ -31,7 +37,7 @@ function handleUpdateStudentForm() {
     <form class="w-2/3 mx-auto">
       <div class="flex items-center m-6">
         <div class="w-1/5">
-          <label class="font-medium">ID: </label>
+          <label class="font-medium">ID:</label>
         </div>
         <div class="w-3/5">
           <input
@@ -40,6 +46,7 @@ function handleUpdateStudentForm() {
             class="border-2 border-gray-200 w-full py-2 px-4"
             readonly
             disabled
+            v-model.trim="studentData.id"
           />
         </div>
       </div>
@@ -53,6 +60,7 @@ function handleUpdateStudentForm() {
             id="stuname"
             class="border-2 border-gray-200 w-full py-2 px-4"
             required
+            v-model.trim="studentData.stuname"
           />
         </div>
       </div>
@@ -66,16 +74,19 @@ function handleUpdateStudentForm() {
             id="email"
             class="border-2 border-gray-200 w-full py-2 px-4"
             required
+            v-model.trim="studentData.email"
           />
         </div>
       </div>
 
       <div class="m-8 flex justify-center">
+       
         <button
           @click.prevent="handleUpdateStudentForm" 
           type="submit"
           class="bg-purple-700 text-white font-medium py-2 px-6 rounded-md hover:bg-purple-800 mr-5">Save
         </button>
+   
         <RouterLink :to="{name:'list' }">
           <button
             type="button"
