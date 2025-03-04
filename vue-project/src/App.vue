@@ -9,7 +9,7 @@
           Welcome To VueJS CRUD Application For User Details
         </h1>
       </div>
-       <RouterView/>
+       <RouterView/>  
     </main>
 </template>
 
