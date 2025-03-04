@@ -5,7 +5,10 @@
 <template>
   
   <main>
-    <h1 className="text-4xl">Not Found Data</h1>
+    
+    <div  class="flex h-screen bg-rose-200 w-screen justify-center items-center">
+      <h1 className="text-4xl text-white text-center ">Not Found Data</h1>
+    </div>
   </main>
 </template>
 

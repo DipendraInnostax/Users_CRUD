@@ -1,249 +1,79 @@
 {
   "students": [
     {
-      "id": "2120",
-      "stuname": "qwe",
+      "id": "57e5",
+      "stuname": "add2",
       "email": "zbc@email.com"
     },
     {
-      "id": "a5cc",
-      "stuname": "qwerty",
-      "email": "wertg@gmail.com"
-    },
-    {
-      "id": "0ecb",
-      "stuname": "weg",
+      "id": "6a15",
+      "stuname": "add3",
       "email": "zbc@email.com"
     },
     {
-      "id": "68dd",
-      "stuname": "abc",
-      "email": "zbc@email.com"
-    },
-    {
-      "id": "ca30",
-      "stuname": "name",
-      "email": "test@gmail.com"
-    },
-    {
-      "id": "e7cc",
-      "stuname": "Sonam bajwa",
-      "email": "zbc@email.com"
-    },
-    {
-      "id": "22d0",
-      "stuname": "Sonam bajwa",
-      "email": "test@gmail.com"
-    },
-    {
-      "id": "f26b",
-      "stuname": "name",
-      "email": "test@gmail.com"
-    },
-    {
-      "id": "8523",
-      "stuname": "abc",
-      "email": "zbc@email.com"
-    },
-    {
-      "id": "e2ba",
-      "stuname": "abc",
-      "email": "zbc@email.com"
-    },
-    {
-      "id": "9d20",
-      "stuname": "abc",
-      "email": "test@gmail.com"
-    },
-    {
-      "id": "caaf",
-      "stuname": "abc",
-      "email": "zbc@email.com"
-    },
-    {
-      "id": "ed69",
-      "stuname": "abc",
-      "email": "zbc@email.com"
-    },
-    {
-      "id": "0f6d",
-      "stuname": "abc",
-      "email": "zbc@email.com"
-    },
-    {
-      "id": "d5eb",
-      "stuname": "Sonam bajwa",
-      "email": "test@gmail.com"
-    },
-    {
-      "id": "b304",
-      "stuname": "abc",
-      "email": "test@gmail.com"
-    },
-    {
-      "id": "63ae",
-      "stuname": "Sonam bajwa",
-      "email": "zbc@email.com"
-    },
-    {
-      "id": "e031",
-      "stuname": "abc",
-      "email": "zbc@email.com"
-    },
-    {
-      "id": "2817",
-      "stuname": "abc",
-      "email": "zbc@email.com"
-    },
-    {
-      "id": "d4ff",
-      "stuname": "Sonam bajwa",
-      "email": "zbc@email.com"
-    },
-    {
-      "id": "a5aa",
-      "stuname": "Sonam bajwa",
-      "email": "zbc@email.com"
-    },
-    {
-      "id": "5fa6",
-      "stuname": "abc",
-      "email": "zbc@email.com"
-    },
-    {
-      "id": "dcd0",
-      "stuname": "Sonam bajwa",
-      "email": "zbc@email.com"
-    },
-    {
-      "id": "4d34",
-      "stuname": "abc",
-      "email": "zbc@email.com"
-    },
-    {
-      "id": "5b01",
-      "stuname": "hgjh",
-      "email": "zbc@email.com"
-    },
-    {
-      "id": "dc20",
-      "stuname": "abc",
-      "email": "zbc@email.com"
-    },
-    {
-      "id": "38fc",
-      "stuname": "abc",
-      "email": "zbc@email.com"
-    },
-    {
-      "id": "9d60",
-      "stuname": "Sonam bajwa",
-      "email": "zbc@email.com"
-    },
-    {
-      "id": "784c",
-      "stuname": "Sonam bajwa",
-      "email": "test@gmail.com"
-    },
-    {
-      "id": "d895",
-      "stuname": "1232qwer",
-      "email": "add@gmail.com"
-    },
-    {
-      "id": "6241",
-      "stuname": "qwerty",
+      "id": "246a",
+      "stuname": "addnew",
       "email": "qwerty@gmail.com"
     },
     {
-      "id": "681f",
-      "stuname": "qwerswq",
+      "id": "4634",
+      "stuname": "qwer",
       "email": "qwerty@gmail.com"
     },
     {
-      "id": "ae30",
-      "stuname": "qweqwe",
+      "id": "d124",
+      "stuname": "wearee",
       "email": "zbc@email.com"
     },
     {
-      "id": "ea83",
-      "stuname": "q",
+      "id": "4d6c",
+      "stuname": "wer",
       "email": "zbc@email.com"
     },
     {
-      "id": "fd68",
+      "id": "189e",
+      "stuname": "user001",
+      "email": "userAdded@hotmail.com"
+    },
+    {
+      "id": "3dd5",
       "stuname": "qwerty",
-      "email": "test@gmail.com"
+      "email": "aman@gmail.in"
     },
     {
-      "id": "b23c",
-      "stuname": "abc",
-      "email": "zbc@email.com"
-    },
-    {
-      "id": "0df6",
+      "id": "b2fa",
       "stuname": "name",
-      "email": "test@gmail.com"
+      "email": "email@email.com"
     },
     {
-      "id": "e124",
-      "stuname": "Sonam bajwa",
-      "email": "zbc@email.com"
+      "id": "2514",
+      "stuname": "name1",
+      "email": "email@email.com"
     },
     {
-      "id": "32fc",
-      "stuname": "abc",
-      "email": "zbc@email.com"
+      "id": "3771",
+      "stuname": "name2",
+      "email": "email@email.com"
     },
     {
-      "id": "6929",
-      "stuname": "abc",
-      "email": "add@gmail.com"
+      "id": "2ba2",
+      "stuname": "name3",
+      "email": "email@email.com"
     },
     {
-      "id": "9a00",
-      "stuname": "abc",
-      "email": "zbc@email.com"
+      "id": "de9d",
+      "stuname": "name4",
+      "email": "email@email.com"
     },
     {
-      "id": "f15d",
-      "stuname": "abc",
-      "email": "zbc@email.com"
+      "id": "a6ea",
+      "stuname": "name5",
+      "email": "email@email.com"
     },
     {
-      "id": "3d25",
-      "stuname": "abc",
-      "email": "zbc@email.com"
-    },
-    {
-      "id": "ec5a",
-      "stuname": "abc",
-      "email": "zbc@email.com"
-    },
-    {
-      "id": "f5f6",
-      "stuname": "abc",
-      "email": "zbc@email.com"
-    },
-    {
-      "id": "b2e1",
-      "stuname": "qweqa",
-      "email": "test1@gmail.com"
-    },
-    {
-      "id": "2c8e",
-      "stuname": "abc",
-      "email": "zbc@email.com"
-    },
-    {
-      "id": "d919",
-      "stuname": "abc",
-      "email": "zbc@email.com"
-    },
-    {
-      "id": "a93c",
-      "stuname": "qwe",
-      "email": "zbc@email.com"
+      "id": "c4e5",
+      "stuname": "name6",
+      "email": "email@email.com"
     }
   ]
 }

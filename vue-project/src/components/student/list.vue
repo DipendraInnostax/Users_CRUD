@@ -1,7 +1,8 @@
 <script setup>
 
 import "vue3-toastify/dist/index.css";
-import {toast} from "vue3-toastify"
+import { useToast } from "vue-toastification";
+ const toast = useToast();
 
 import {
   EyeIcon,
@@ -40,6 +41,7 @@ const openDeleteModal = (id) => {
   deleteStudentId.value = id;
   markForDeletion(id);
   isDeleteModalOpen.value = true;
+  
 };
 
 
@@ -47,7 +49,9 @@ const confirmDelete = async () => {
   if (!deleteStudentId.value) return;
 
   await destroyStudent(deleteStudentId.value);
-  toast.success("Deleted User Details", { autoclose: 2000 });
+  toast.success("Deleted User Details", {
+     autoclose: 1000 
+    });
 
   await getAllStudent();
   isDeleteModalOpen.value = false;
@@ -70,9 +74,9 @@ const openModal = async (id) => {
 
   await getSingleStudentData(id);
   selectedStudent.value = studentData.value;
-
-  //console.log("studentData:", studentData.value);
-  //console.log("selectedStudent:", selectedStudent.value);
+ 
+  // console.log("studentData:", studentData.value);
+  // console.log("selectedStudent:", selectedStudent.value);
   isModalOpen.value = true; 
 };
 
@@ -82,6 +86,10 @@ const closeModal = async() => {
   await getAllStudent();
 };
 
+const obfuscateEmail = (email) => {
+  if (!email) return "N/A"; 
+  return email.replace(/(\w{1})[\w.-]+@([\w.-]+)\.(\w{2,})/, '$1***@$2.***');
+};
 
 </script>
 
@@ -97,8 +105,8 @@ const closeModal = async() => {
 
         <RouterLink :to="{ name:'add' }">
           <button
-            class="text-white text-md bg-green-700 hover:bg-green-800 font-medium rounded-lg p-2 px-6 cursor-pointer">
-            <UserPlusIcon /> Add
+            class="text-white text-md  bg-green-700 hover:bg-green-800 font-medium rounded-md mr-12 p-2 px-6 cursor-pointer">
+            <UserPlusIcon class="h-8"/> Add New
           </button>
         </RouterLink>
 
@@ -120,20 +128,22 @@ const closeModal = async() => {
       :class="{ 'line-through': deletedStates[id] }">
           <td class="py-2 shadow-sm">{{ ++i }}</td>
           <td class="py-2 shadow-sm">{{ stuname }}</td>
-          <td class="py-2 shadow-sm ">{{ email }}</td>
+          <td class="py-2 shadow-sm ">{{obfuscateEmail(email)}}</td>
         <td class="py-2 shadow-lg">
-
+          
+            
           <button @click="openModal(id)">
-              <EyeIcon class="text-blue-600 h-5 w-5 inline cursor-pointer" />
+              <EyeIcon class="text-blue-400 h-5 w-5 inline cursor-pointer" />
             </button>
 
-          <RouterLink v-if="id" :to="{ name:'edit', params:{ id:id}}">
+          <RouterLink v-if="id" :to="{ name:'edit',params:{id:id}}">
             <PencilIcon class="text-emerald-500 h-5 w-5 inline mx-6 cursor-pointer" />
           </RouterLink>
 
           <button @click="openDeleteModal(id)">
             <TrashIcon class="text-red-500 h-5 w-5 inline cursor-pointer" />
           </button>
+          
         </td>
       </tr>
     </tbody>
