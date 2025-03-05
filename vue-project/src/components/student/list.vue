@@ -1,7 +1,6 @@
 <script setup>
 
 import { useRouter } from "vue-router";
-import { computed } from "vue";
 
 
 import "vue3-toastify/dist/index.css";
@@ -11,7 +10,6 @@ import { useToast } from "vue-toastification";
 import { useUserStore } from "../../stores/userStore";
 
 const userStore = useUserStore();
-const users = computed(() => userStore.users);
 
 const router = useRouter();
 
@@ -133,17 +131,19 @@ const obfuscateEmail = (email) => {
       </div>
     </div> -->
   
-    <div class="bg-gray-600 p-3 w-full mb-10">
+    <div class="bg-gray-500 p-3 grid grid-cols-9 w-full">
       <div class="col-span-6 md:col-span-8">
         <h1 class="text-2xl font-bold text-center mt-2 text-white">
           Student List
         </h1>
       </div>
-      <div class="text-center mt-6">
+      <div class="text-right">
+
           <button  @click="goToAddUser"
-            class="text-white text-md  bg-green-700 hover:bg-green-800 font-medium rounded-md  p-2 px-6 cursor-pointer">
+            class="text-white text-md  bg-green-700 hover:bg-green-800 font-medium rounded-md mr-12 p-2 px-6 cursor-pointer">
             <UserPlusIcon class="h-8"/> Add New
           </button>
+      
       </div>
     </div>
   </div>
@@ -181,13 +181,13 @@ const obfuscateEmail = (email) => {
         </td>
       </tr> -->
     
-      <tr v-for="(user, i) in userStore.users" :key="user.id">
+      <tr v-for="({ id, name, email }, i) in userStore.users" :key="id">
           <td class="p-2 border">{{ ++i }}</td>
-          <td class="p-2 border">{{ user.stuname }}</td>
-          <td class="p-2 border">{{ user.email }}</td>
+          <td class="p-2 border">{{ name }}</td>
+          <td class="p-2 border">{{ email }}</td>
           <td class="p-2 border">
-            <button @click="editUser(user.id)" class="bg-blue-500 text-white px-2 py-1 rounded cursor-pointer">Edit</button>
-            <button @click="userStore.deleteUser(user.id)" class="bg-red-500 text-white px-2 py-1 rounded ml-2 cursor-pointer">Delete</button>
+            <button @click="editUser({ id, name, email })" class="bg-blue-500 text-white px-2 py-1 rounded cursor-pointer">Edit</button>
+            <button @click="userStore.deleteUser(id)" class="bg-red-500 text-white px-2 py-1 rounded ml-2 cursor-pointer">Delete</button>
          
           </td>
         </tr>

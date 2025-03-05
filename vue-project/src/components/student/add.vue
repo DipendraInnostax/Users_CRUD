@@ -102,70 +102,34 @@ const userStore = useUserStore();
 const router = useRouter();
 
 const newUser = ref({
-  stuname: '',
+  name: '',
   email: '',
 });
-const errors = ref({
-  stuname: '',
-  email: '',
-});
-
-const validateInput = () => {
-  let isValid = true;
-  if (!newUser.value.stuname.trim()) {
-    console.log("Name required")
-    isValid = false;
-  } else {
-    errors.value.name = '';
-  }
-
-  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  if (!newUser.value.email.trim()) {
-    console.log("email required")
-    isValid = false;
-  } else if (!emailPattern.test(newUser.value.email)) {
-    console.log("invalid email type");
-    isValid = false;
-  } else {
-    errors.value.email = '';
-  }
-
-  return isValid;
-};
 
 const addUser = () => {
-  if (validateInput()) {
-    userStore.addUser(newUser.value);
-    router.push('/');
-  }
+  userStore.addUser(newUser.value); 
+  router.push('/'); 
 };
-
-// const addUser = () => {
-//   userStore.addUser(newUser.value); 
-//   router.push('/'); 
-// };
 </script>
 
 <template>
-  <div class="flex flex-col items-center justify-center mt-25 bg-white">
-    <div class="bg-gray-200 p-8 rounded-lg shadow-lg w-96">
+  <div class="flex flex-col items-center justify-center min-h-screen bg-gray-100">
+    <div class="bg-white p-8 rounded-lg shadow-lg w-96">
       <h2 class="text-2xl font-semibold text-gray-700 mb-4 text-center">Add New User</h2>
       
       <input
-        v-model="newUser.stuname"
-        class="w-full p-3 border bg-gray-100 border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 mb-3"
+        v-model="newUser.name"
+        class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 mb-3"
         type="text"
         placeholder="Enter name"
-        required
        
       />
       
       <input
         v-model="newUser.email"
-        class="w-full p-3 border bg-gray-100 border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 mb-4"
+        class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 mb-4"
         type="email"
         placeholder="Enter email"
-        required
         
       />
       

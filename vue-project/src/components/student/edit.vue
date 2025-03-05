@@ -103,63 +103,57 @@ function handleUpdateStudentForm() {
 <style scoped></style> -->
 
 
+
 <script setup>
 import { useUserStore } from '../../stores/userStore';
-import { ref, onMounted, computed } from 'vue';
+import { ref, onMounted } from 'vue';
 import { useRouter, useRoute } from 'vue-router';
 
 const userStore = useUserStore();
 const router = useRouter();
 const route = useRoute();
 
-
-const userId = Number(route.params.id);
-
-const user = ref({
-  stuname: '',
-  email: '',
-});
+const userId = route.params.id;
+const user = ref(
+  { name: '',
+    email: '' });
 
 
 onMounted(() => {
-  const foundUser = userStore.users.find((u)=>u.id===userId);
+  const foundUser = userStore.users.find((u) => u.id == userId);
   if (foundUser) {
     user.value = { ...foundUser }; 
   }
 });
 
-
 const saveChanges = () => {
-  userStore.updateUser(route.params.id,user.value);
+  userStore.updateUser(user.value);
   router.push('/'); 
 };
 </script>
 
 <template>
-  <div class="flex flex-col items-center justify-center mt-25 bg-white">
-    <div class="bg-gray-100 p-8 rounded-lg shadow-lg w-96">
+  <div class="flex flex-col items-center justify-center min-h-screen bg-gray-100">
+    <div class="bg-white p-8 rounded-lg shadow-lg w-96">
       <h2 class="text-2xl font-semibold text-gray-700 mb-4 text-center">Edit User</h2>
       
       <input
-        v-model="user.stuname"
-        class="w-full bg-white p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 mb-3"
+        v-model="user.name"
+        class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 mb-3"
         type="text"
-        required
         placeholder="Enter name"
       />
       
       <input
         v-model="user.email"
-        class="w-full p-3 bg-white border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 mb-4"
+        class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 mb-4"
         type="email"
-        required
-        placeholder="user.email"
-        
+        placeholder="Enter email"
       />
       
       <button 
         @click="saveChanges"
-        class="w-full bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 rounded-md transition duration-300"
+        class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 rounded-md transition duration-300"
       >
         Save Changes
       </button>
