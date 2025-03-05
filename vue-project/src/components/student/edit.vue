@@ -1,4 +1,5 @@
-<script setup> 
+<!-- <script setup> 
+
 import {useRoute} from "vue-router"
 import { RouterLink } from "vue-router";
 
@@ -6,7 +7,7 @@ import "vue3-toastify/dist/index.css";
 import {toast} from "vue3-toastify"
 
 import { onMounted } from "vue";
-import useStudent from "../../composable/studentApi";
+import useStudent from "../../composable/useStudentApi";
 
 const route = useRoute();
 
@@ -84,13 +85,13 @@ function handleUpdateStudentForm() {
         <button
           @click.prevent="handleUpdateStudentForm" 
           type="submit"
-          class="bg-purple-700 text-white font-medium py-2 px-6 rounded-md hover:bg-purple-800 mr-5">Save
+          class="bg-purple-700 text-white font-medium py-2 px-6 rounded-md hover:bg-purple-800 mr-5 cursor-pointer">Save
         </button>
    
         <RouterLink :to="{name:'list' }">
           <button
             type="button"
-            class="bg-emerald-700 text-white font-medium p-2 rounded-md hover:bg-emerald-800">
+            class="bg-emerald-700 text-white font-medium p-2 rounded-md hover:bg-emerald-900 cursor-pointer">
             Back to Home
           </button>
         </RouterLink>
@@ -99,4 +100,69 @@ function handleUpdateStudentForm() {
     </div>
 </template>
 
-<style scoped></style>
+<style scoped></style> -->
+
+
+<script setup>
+import { useUserStore } from '../../stores/userStore';
+import { ref, onMounted, computed } from 'vue';
+import { useRouter, useRoute } from 'vue-router';
+
+const userStore = useUserStore();
+const router = useRouter();
+const route = useRoute();
+
+
+const userId = Number(route.params.id);
+
+const user = ref({
+  stuname: '',
+  email: '',
+});
+
+
+onMounted(() => {
+  const foundUser = userStore.users.find((u)=>u.id===userId);
+  if (foundUser) {
+    user.value = { ...foundUser }; 
+  }
+});
+
+
+const saveChanges = () => {
+  userStore.updateUser(route.params.id,user.value);
+  router.push('/'); 
+};
+</script>
+
+<template>
+  <div class="flex flex-col items-center justify-center mt-25 bg-white">
+    <div class="bg-gray-100 p-8 rounded-lg shadow-lg w-96">
+      <h2 class="text-2xl font-semibold text-gray-700 mb-4 text-center">Edit User</h2>
+      
+      <input
+        v-model="user.stuname"
+        class="w-full bg-white p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 mb-3"
+        type="text"
+        required
+        placeholder="Enter name"
+      />
+      
+      <input
+        v-model="user.email"
+        class="w-full p-3 bg-white border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 mb-4"
+        type="email"
+        required
+        placeholder="user.email"
+        
+      />
+      
+      <button 
+        @click="saveChanges"
+        class="w-full bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 rounded-md transition duration-300"
+      >
+        Save Changes
+      </button>
+    </div>
+  </div>
+</template>

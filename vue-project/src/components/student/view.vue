@@ -3,7 +3,7 @@
 import {useRoute} from "vue-router"
 import { RouterLink } from "vue-router";
 import { onMounted } from "vue";
-import useStudent from "../../composable/studentApi";
+import useStudent from "../../composable/useStudentApi";
 
 const route = useRoute();
 

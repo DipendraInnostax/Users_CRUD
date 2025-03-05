@@ -1,8 +1,30 @@
 <script setup>
 
+import { useRouter } from "vue-router";
+import { computed } from "vue";
+
+
 import "vue3-toastify/dist/index.css";
 import { useToast } from "vue-toastification";
  const toast = useToast();
+
+import { useUserStore } from "../../stores/userStore";
+
+const userStore = useUserStore();
+const users = computed(() => userStore.users);
+
+const router = useRouter();
+
+
+ 
+const goToAddUser = () => {
+  router.push('/add');
+};
+
+const editUser = (id) => {
+  router.push(`/edit/${id}`);
+};
+
 
 import {
   EyeIcon,
@@ -10,11 +32,10 @@ import {
   TrashIcon,
   UserPlusIcon,
 } from "@heroicons/vue/24/solid";
-
 import { ref  } from "vue";
 import { RouterLink } from "vue-router";
 import { onMounted } from "vue";
-import useStudent from "../../composable/studentApi";
+import useStudent from "../../composable/useStudentApi";
 
 
 const isModalOpen = ref(false);
@@ -58,7 +79,6 @@ const confirmDelete = async () => {
   deleteStudentId.value = null;
 };
 
-
 const cancelDelete = () => {
   if (deleteStudentId.value) {
     deletedStates.value[deleteStudentId.value] = false;
@@ -95,7 +115,7 @@ const obfuscateEmail = (email) => {
 
 <template>
   <div>
-    <div class="bg-gray-500 p-3 grid grid-cols-9 w-full">
+    <!-- <div class="bg-gray-500 p-3 grid grid-cols-9 w-full">
       <div class="col-span-6 md:col-span-8">
         <h1 class="text-2xl font-bold text-center mt-2 text-white">
           Student List
@@ -111,6 +131,20 @@ const obfuscateEmail = (email) => {
         </RouterLink>
 
       </div>
+    </div> -->
+  
+    <div class="bg-gray-600 p-3 w-full mb-10">
+      <div class="col-span-6 md:col-span-8">
+        <h1 class="text-2xl font-bold text-center mt-2 text-white">
+          Student List
+        </h1>
+      </div>
+      <div class="text-center mt-6">
+          <button  @click="goToAddUser"
+            class="text-white text-md  bg-green-700 hover:bg-green-800 font-medium rounded-md  p-2 px-6 cursor-pointer">
+            <UserPlusIcon class="h-8"/> Add New
+          </button>
+      </div>
     </div>
   </div>
 
@@ -124,28 +158,40 @@ const obfuscateEmail = (email) => {
       </tr>
     </thead>
     <tbody class="text-center">
-      <tr v-for="({ id, stuname, email }, i) in studentData" :key="id"
+      <!-- <tr v-for="({ id, stuname, email }, i) in studentData" :key="id"
       :class="{ 'line-through': deletedStates[id] }">
           <td class="py-2 shadow-sm">{{ ++i }}</td>
           <td class="py-2 shadow-sm">{{ stuname }}</td>
           <td class="py-2 shadow-sm ">{{obfuscateEmail(email)}}</td>
-        <td class="py-2 shadow-lg">
+        <td class="py-2 shadow-lg space-x-4">
           
             
           <button @click="openModal(id)">
-              <EyeIcon class="text-blue-400 h-5 w-5 inline cursor-pointer" />
+              <EyeIcon class="text-blue-400 h-5 w-5 inline cursor-pointer  " />
             </button>
 
           <RouterLink v-if="id" :to="{ name:'edit',params:{id:id}}">
-            <PencilIcon class="text-emerald-500 h-5 w-5 inline mx-6 cursor-pointer" />
+            <PencilIcon class="text-emerald-500 h-5 w-5 inline cursor-pointer" />
           </RouterLink>
 
           <button @click="openDeleteModal(id)">
-            <TrashIcon class="text-red-500 h-5 w-5 inline cursor-pointer" />
+            <TrashIcon class="text-red-500 h-5 w-5 inline cursor-pointer " />
           </button>
           
         </td>
-      </tr>
+      </tr> -->
+    
+      <tr v-for="(user, i) in userStore.users" :key="user.id">
+          <td class="p-2 border">{{ ++i }}</td>
+          <td class="p-2 border">{{ user.stuname }}</td>
+          <td class="p-2 border">{{ user.email }}</td>
+          <td class="p-2 border">
+            <button @click="editUser(user.id)" class="bg-blue-500 text-white px-2 py-1 rounded cursor-pointer">Edit</button>
+            <button @click="userStore.deleteUser(user.id)" class="bg-red-500 text-white px-2 py-1 rounded ml-2 cursor-pointer">Delete</button>
+         
+          </td>
+        </tr>
+
     </tbody>
   </table>
 

@@ -1,79 +1,14 @@
 {
   "students": [
     {
-      "id": "57e5",
-      "stuname": "add2",
-      "email": "zbc@email.com"
+      "id": "8ae5",
+      "stuname": "addNewData",
+      "email": "NewData@gmail.com"
     },
     {
-      "id": "6a15",
-      "stuname": "add3",
-      "email": "zbc@email.com"
-    },
-    {
-      "id": "246a",
-      "stuname": "addnew",
-      "email": "qwerty@gmail.com"
-    },
-    {
-      "id": "4634",
-      "stuname": "qwer",
-      "email": "qwerty@gmail.com"
-    },
-    {
-      "id": "d124",
-      "stuname": "wearee",
-      "email": "zbc@email.com"
-    },
-    {
-      "id": "4d6c",
-      "stuname": "wer",
-      "email": "zbc@email.com"
-    },
-    {
-      "id": "189e",
-      "stuname": "user001",
-      "email": "userAdded@hotmail.com"
-    },
-    {
-      "id": "3dd5",
-      "stuname": "qwerty",
-      "email": "aman@gmail.in"
-    },
-    {
-      "id": "b2fa",
-      "stuname": "name",
-      "email": "email@email.com"
-    },
-    {
-      "id": "2514",
-      "stuname": "name1",
-      "email": "email@email.com"
-    },
-    {
-      "id": "3771",
-      "stuname": "name2",
-      "email": "email@email.com"
-    },
-    {
-      "id": "2ba2",
-      "stuname": "name3",
-      "email": "email@email.com"
-    },
-    {
-      "id": "de9d",
-      "stuname": "name4",
-      "email": "email@email.com"
-    },
-    {
-      "id": "a6ea",
-      "stuname": "name5",
-      "email": "email@email.com"
-    },
-    {
-      "id": "c4e5",
-      "stuname": "name6",
-      "email": "email@email.com"
+      "stuname": "hello",
+      "email": "hello@loom.com",
+      "id": "4296"
     }
   ]
 }
