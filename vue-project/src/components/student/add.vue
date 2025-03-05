@@ -1,11 +1,11 @@
-<script setup>
+<!-- <script setup>
 import { reactive } from "vue";
 import { RouterLink } from "vue-router";
 
 import { useToast } from "vue-toastification";
 const toast = useToast();
 
-import useStudent from "../../composable/studentApi";
+import useStudent from "../../composable/useStudentApi";
 
 const { createStudent } = useStudent();
 
@@ -89,4 +89,57 @@ const handleAddStudentForm = async () => {
 </template>
 
 <style scoped>
-</style>
+</style> -->
+
+
+
+<script setup>
+import { useUserStore } from '../../stores/userStore';
+import { ref } from 'vue';
+import { useRouter } from 'vue-router';
+
+const userStore = useUserStore();
+const router = useRouter();
+
+const newUser = ref({
+  name: '',
+  email: '',
+});
+
+const addUser = () => {
+  userStore.addUser(newUser.value); 
+  router.push('/'); 
+};
+</script>
+
+<template>
+  <div class="flex flex-col items-center justify-center min-h-screen bg-gray-100">
+    <div class="bg-white p-8 rounded-lg shadow-lg w-96">
+      <h2 class="text-2xl font-semibold text-gray-700 mb-4 text-center">Add New User</h2>
+      
+      <input
+        v-model="newUser.name"
+        class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 mb-3"
+        type="text"
+        placeholder="Enter name"
+       
+      />
+      
+      <input
+        v-model="newUser.email"
+        class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 mb-4"
+        type="email"
+        placeholder="Enter email"
+        
+      />
+      
+      <button 
+        @click="addUser"
+        class="w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-2 rounded-md transition duration-300"
+      >
+        Save
+      </button>
+    </div>
+  </div>
+</template>
+
