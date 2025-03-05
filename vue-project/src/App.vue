@@ -4,7 +4,7 @@
 
 <template>
     <main >
-      <div className=" p-5 bg-gray-600 ">
+      <div className=" p-5 bg-gray-800 ">
         <h1 className="text-xl md:text-2xl font-semibold text-center text-white  ">
           Welcome To VueJS CRUD Application For User Details
         </h1>
