@@ -1,8 +1,7 @@
 import { ref  } from "vue";
 import axios from "axios";
 
-import "vue3-toastify/dist/index.css";
-import {toast} from "vue3-toastify"
+
 
 export default function useStudent(){
  const URL="http://localhost:3000/students/"
@@ -10,6 +9,7 @@ export default function useStudent(){
  const studentData=ref([]);
  const error=ref(null);
 
+ 
  const getAllStudent=async()=>{
     studentData.value=[];
     error.value=null;
@@ -29,7 +29,6 @@ export default function useStudent(){
     try {
         const res=await axios(URL+id);
         studentData.value=res.data;
-       
     } catch (err) {
         console.log(err);
     }
@@ -39,7 +38,6 @@ export default function useStudent(){
  const createStudent = async (formData) => {
     studentData.value = []
     error.value = null
-    
     try {
       const config = {
         method: 'POST',
@@ -48,10 +46,8 @@ export default function useStudent(){
           'Content-Type': 'application/json'
         },
         data: JSON.stringify(formData)
-      }
-         
+      }  
       const res = await axios(config)
-      //prevent.default();
       studentData.value = res.data
     } catch (err) {
       console.log(err)
@@ -60,6 +56,7 @@ export default function useStudent(){
 
 
   const editdata=async(id,data)=>{
+    // if (event) event.preventDefault();
     // studentData.value=[];
     // error.value=null;
     try {
@@ -71,9 +68,12 @@ export default function useStudent(){
         },
         data: JSON.stringify(data)
       }
+      
       const res = await axios(config)
       studentData.value = res.data
-      //preventDefault()
+
+     // toast.success("Updated User Successfully")
+      
     } catch (err) {
       console.log(err)
     }
@@ -81,8 +81,6 @@ export default function useStudent(){
 
 
  const destroyStudent = async (id) => {
-  studentData.value = []
-  error.value = null
   try {
     const config = {
       method: 'DELETE',
@@ -93,7 +91,7 @@ export default function useStudent(){
     }
     const res = await axios(config)
     studentData.value = res.data
-    console.log(res)
+    //console.log(res)
   } catch (err) {
     console.log(err);
   }

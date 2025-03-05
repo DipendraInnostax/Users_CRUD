@@ -1,8 +1,9 @@
 <script setup>
 import { reactive } from "vue";
 import { RouterLink } from "vue-router";
-import "vue3-toastify/dist/index.css";
-import {toast} from "vue3-toastify"
+
+import { useToast } from "vue-toastification";
+const toast = useToast();
 
 import useStudent from "../../composable/studentApi";
 
@@ -14,33 +15,30 @@ const formData = reactive({
 });
 
 const handleAddStudentForm = async () => {
-  try {
-
-    if (!formData.stuname || !formData.email) {
-      toast.error("Empty Field!", {
-        autoClose: 1000,
-      });
+  
+  if (!formData.stuname || !formData.email) {
+      toast.error("Required Field !!");
       return;
     }
-
     const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     if (!emailPattern.test(formData.email)) {
-      toast.error("Invalid Email Format!", {
-        autoClose: 1000,
-      });
+      toast.error("Invalid Email Format !!" );
       return;
     }
 
+  try {
+
     await createStudent(formData);
-    prevent.default();
-    toast.success("User Added Successfully!", {
-      autoClose: 2000,
+    toast.success("User Added Successfully!",{
+     autoclose: 1000 
     });
+    //prevent.default();
   }
    catch (error) {
     console.error("Error adding student:", error);
-    toast.error("Something went wrong!", {
-      autoClose: 1000,  });
+    toast.error("Something went wrong while user addition!",{
+     autoclose: 1000 
+    });
   }
 };
 
@@ -77,8 +75,8 @@ const handleAddStudentForm = async () => {
       </div>
 
       <div class="m-8 flex justify-center">
-        <button
-          type="button" @click="handleAddStudentForm" class="bg-green-500 text-white font-medium py-2 rounded-md px-6 hover:bg-purple-800 mr-6 cursor-pointer" > Add </button>
+        <button type="button" @click="handleAddStudentForm" 
+          class="bg-green-500 text-white font-medium py-2 rounded-md px-6 hover:bg-purple-800 mr-6 cursor-pointer"> Add </button>
 
         <RouterLink :to="{name:'list'}">
           <button type="button" class="bg-pink-600 text-white font-medium p-2 rounded-md hover:bg-emerald-800 cursor-pointer">

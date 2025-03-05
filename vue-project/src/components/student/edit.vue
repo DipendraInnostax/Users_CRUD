@@ -22,9 +22,9 @@ function handleUpdateStudentForm() {
   editdata(route.params.id,studentData.value)
   //console.log("updated");
   //preventDefault()
-  toast.success("Updated User Successfully",{
-    autoclose:1000,
-  })
+   toast.success("Updated User Successfully",{
+     autoclose: 1000 
+    })
 }
 </script>
 
